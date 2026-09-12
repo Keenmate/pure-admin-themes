@@ -180,7 +180,13 @@ function scopeMap(css, scope) {
     const hasRoot = rootRe.test(sel);
     // skip only a PURE opposite-mode block (no :root baseline, not our scope)
     if (otherRe.test(sel) && !hasRoot && !sameRe.test(sel)) continue;
-    const keep = hasRoot || sameRe.test(sel) || /\.pa-color-/.test(sel);
+    // .pa-color-* is a colour-panel CONTEXT (applies only to its subtree), NOT
+    // the ambient page — and in dark-first themes those panels carry dark
+    // surfaces. Folding them into the ambient scope map makes every general
+    // component pair resolve as if simultaneously inside every colour panel
+    // (last-write-wins picks the last panel's surface), producing false
+    // opposite-mode flags. Resolve general pairs against the ambient scope only.
+    const keep = hasRoot || sameRe.test(sel);
     if (!keep) continue;
     for (const decl of m[2].split(';')) {
       const i = decl.indexOf(':');

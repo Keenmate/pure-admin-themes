@@ -280,6 +280,20 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   }
 }
 
+// Neutral Light/Dark buttons: their fills often land near the surface they sit
+// on (Light #f8f9fa on a white card ≈ 1.03:1 silhouette; in dark mode both used
+// to collapse to nearly the same mid-slate). The core rule sets the border to
+// match the fill, so they have no edge. Give both a real edge from the
+// design-system border colour, held on hover, so they always read as buttons.
+.pa-btn--light,
+.pa-btn--dark {
+  border-color: var(--pc-border-color);
+
+  &:hover {
+    border-color: var(--pc-border-color);
+  }
+}
+
 // =============================================================================
 // CSS VARIABLES - LIGHT MODE (Default)
 // =============================================================================
@@ -299,6 +313,18 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   --pa-input-group-prepend-text: #{$corporate-slate-700};
   --pa-input-group-append-bg: #{$corporate-slate-100};
   --pa-input-group-append-text: #{$corporate-slate-700};
+
+  // Navbar chrome is dark slate-800 in BOTH modes, but the default
+  // --pc-navbar-text is $base-text-color-1 (slate-700) — dark-on-dark (1.41:1).
+  // The demo masks this with per-child !important overrides, but the token
+  // itself must be light so wrappers reading --pc-navbar-text stay readable.
+  --pc-navbar-text: #{$corporate-slate-100};
+  --pc-navbar-text-secondary: #{$corporate-slate-300};
+  --pc-navbar-profile-name-color: #ffffff;
+
+  // Command-palette match highlight: accent-on-accent-tint was 1.92:1.
+  // Darkest brand blue on the pale accent tint reads as a clear match.
+  --pa-command-palette-highlight-text: #{$corporate-blue-700};
 }
 
 // =============================================================================
@@ -413,6 +439,8 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   --pa-command-palette-item-hover-bg: #{$dark-surface};
   --pa-command-palette-item-active-bg: rgba(14, 165, 233, 0.2);
   --pa-command-palette-highlight-bg: rgba(14, 165, 233, 0.3);
+  // Accent-on-accent-tint was 2.20:1; light body text on the blue tint reads.
+  --pa-command-palette-highlight-text: #{$dark-text};
 
   // Alert colors - derived from semantic colors
   @include output-pc-alert-variables-dark;
@@ -423,14 +451,27 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   }
 
   // Buttons
-  // Inverted secondary: light slate-blue button with dark navy text — $dark-border (#475569)
-  // on $dark-card (#1e293b) was only ~2.5:1 contrast and read as disabled.
+  // Secondary is an OUTLINE button in BOTH modes (core .pa-btn--secondary uses
+  // --pc-border-color + --pc-text-color-1, not these tokens). These
+  // --pa-btn-secondary-* values now only drive .pa-btn--outline-secondary:hover
+  // (light-slate fill, dark navy text). Previously a dark !important rule
+  // repainted the base button #475569-filled — which read as disabled — while
+  // this block claimed a lighter fill; that contradiction is now removed.
   --pa-btn-secondary-bg: #{$dark-text-bg};
   --pa-btn-secondary-bg-hover: #{$dark-text};
   --pa-btn-secondary-text: #{$dark-card};
-  --pa-btn-light-bg: #{$dark-surface};
-  --pa-btn-light-bg-hover: #{$dark-border};
-  --pa-btn-light-text: #{$dark-text};
+  // Light and Dark are neutral buttons that must bracket the #1e293b card:
+  // Light = a genuinely LIGHT chip with dark text (mirrors its light-mode
+  // identity), Dark = genuinely DARKER than the card. They used to both be
+  // mid-slate (#334155 / #374151) — nearly identical and both lighter than the
+  // surface, so "Light" and "Dark" were indistinguishable.
+  --pa-btn-light-bg: #{$dark-text-bg};       // #94a3b8 slate-400 — clearly light
+  --pa-btn-light-bg-hover: #cbd5e1;           // slate-300
+  --pa-btn-light-text: #{$dark-card};         // #1e293b dark text on the light chip
+
+  --pa-btn-dark-bg: #{$dark-bg};              // #0f172a — below the card surface
+  --pa-btn-dark-bg-hover: #{$dark-card};      // #1e293b on hover (edge keeps it read)
+  --pa-btn-dark-text: #{$dark-text};          // #f1f5f9
 
   // Color palette adjustment for dark mode
   // $color-9 (#334155 Dark Slate) is ~1.5:1 on $dark-card #1e293b — invisible.
@@ -496,17 +537,6 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
 
   .pa-card {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  }
-
-  .pa-btn--secondary {
-    background-color: #475569 !important;
-    color: #f1f5f9 !important;
-    border-color: #64748b !important;
-
-    &:hover {
-      background-color: #64748b !important;
-      border-color: #94a3b8 !important;
-    }
   }
 
   .pa-btn--outline-bg {
