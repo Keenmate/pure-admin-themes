@@ -382,6 +382,10 @@ $modal-content-bg: $minimal-white;
   --base-accent-color-active: #ffffff;
   --base-accent-color-light: rgba(232, 232, 232, 0.15);
   --base-accent-color-light-hover: rgba(232, 232, 232, 0.2);
+  // Dark mode flips accent to a near-white gray, so text/glyphs painted ON the
+  // accent (badge-remove ✕, count-clear/popover-close hover fill in web components)
+  // must be DARK — the light-mode default (#fff) is invisible on a near-white pill.
+  --base-text-color-on-accent: #{$dark-bg};
   --base-border-color: #{$dark-border};
   --base-input-bg: #{$dark-surface};
   --base-input-color: #{$dark-text};

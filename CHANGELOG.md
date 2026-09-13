@@ -6,6 +6,7 @@ All notable changes to the Pure Admin Themes collection are documented in this f
 
 ### Fixed
 
+- **minimal (dark mode):** Web-component controls that paint a glyph/label ON the accent were invisible. Dark mode flips the accent to a near-white gray (`#e8e8e8`), but `--base-text-color-on-accent` was left at the light-mode default (`#ffffff`) — so the multiselect's badge-remove ✕, and its count-clear / popover-close hover fills, rendered white-on-near-white. Added `--base-text-color-on-accent: #1a1a1a` to the dark block (the core `--pa-btn-primary-text` already flipped to dark here; this restores the same treatment on the generic `--base-*` bridge the web components read).
 - **gruvbox (light mode):** Fixed several low-contrast pairs surfaced by the contrast audit.
     - **Selected sidebar submenu item** (`--pc-sidebar-submenu-active-text`) inherited the dark-mode cream (`#ebdbb2`) and was near-invisible on the light active tint (1.49:1) → pinned to dark brown (`#3c3836`).
     - **`color-5` theme-slot text** (`$color-5-text`) was white on the light purple slot in both modes (2.74:1) → switched to near-black (`#1a1a1a`).
