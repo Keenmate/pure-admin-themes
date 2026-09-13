@@ -2,7 +2,17 @@
 
 All notable changes to the Pure Admin Themes collection are documented in this file.
 
-## [2.9.0-rc13] - 2026-09-11
+## [3.0.0] - 2026-09-13 [PUBLISHED]
+
+Republished in lockstep with `@keenmate/pure-admin-core` `3.0.0` — the stable cut
+of the foundation series (breaking `--pc-*`→`--pa-*` token + `.pa-*`→`.pc-*` shell
+renames). Rebuilt against core 3.0.0 so every theme ships the input-surface text
+token (`--pa-input-text`) and the picker-icon `color-scheme` fix.
+
+### Changed
+
+- **All 16 themes:** `dependencies.core` bumped `^2.9.0-rc06` → `^3.0.0` and theme
+  `version` → `3.0.0`, matching the core major.
 
 ### Added
 
