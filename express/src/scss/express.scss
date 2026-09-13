@@ -447,6 +447,14 @@ $navbar-profile-name-color: $express-black;  // Black text on yellow header
   --pa-input-group-append-bg: #{$express-gray-lightest};
   --pa-input-group-append-text: #{$express-dark};
 
+  // Sidebar is black in BOTH modes ($sidebar-bg: $express-black), but the
+  // light-mode mixin default leaves its text dark (#333 on black = 1.66:1) and
+  // the active-submenu text dark on the red tint (1.24:1). Force light sidebar
+  // text in light mode too, mirroring the dark block.
+  --pc-sidebar-text: #ffffff;
+  --pc-sidebar-text-secondary: #ffffff;
+  --pc-sidebar-submenu-active-text: #ffffff;
+
   // Override alert text for readability on saturated backgrounds
   --pa-alert-success-text: #{$base-success-text};
   --pa-alert-warning-text: #{$base-warning-text};
@@ -508,6 +516,8 @@ $navbar-profile-name-color: $express-black;  // Black text on yellow header
   --pc-sidebar-submenu-bg: #{$dark-bg};
   --pc-sidebar-submenu-hover-bg: rgba(255, 255, 255, 0.1);
   --pc-sidebar-submenu-active-bg: #{rgba($express-red, 0.2)};
+  // Active submenu text vanished on the red tint in dark mode too (1.24:1).
+  --pc-sidebar-submenu-active-text: var(--pc-text-color-1);
 
   // Footer stays yellow
   --pc-footer-bg: #{$express-yellow};
@@ -559,6 +569,8 @@ $navbar-profile-name-color: $express-black;  // Black text on yellow header
   --pa-command-palette-item-hover-bg: #{$dark-surface};
   --pa-command-palette-item-active-bg: rgba(212, 5, 17, 0.2);
   --pa-command-palette-highlight-bg: rgba(212, 5, 17, 0.3);
+  // Match text vanished on the red tint (1.91:1); primary text contrasts.
+  --pa-command-palette-highlight-text: var(--pc-text-color-1);
 
   // Alert colors - derived from semantic colors
   @include output-pc-alert-variables-dark;

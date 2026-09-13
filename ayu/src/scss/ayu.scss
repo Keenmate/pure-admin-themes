@@ -401,6 +401,9 @@ $checkbox-focus-shadow: 0 0 0 2px $base-focus-ring-color;
   --pc-sidebar-submenu-bg: #{$light-elevated};
   --pc-sidebar-submenu-hover-bg: #{$light-border};
   --pc-sidebar-submenu-active-bg: #{rgba(#f29718, 0.2)};
+  // Active submenu text defaulted to a light colour that vanished on the pale
+  // orange tint in light mode (1.25:1). Track the primary text colour.
+  --pc-sidebar-submenu-active-text: var(--pc-text-color-1);
 
   // Footer - dark
   --pc-footer-bg: #{$mirage-bg-deep};
@@ -448,6 +451,8 @@ $checkbox-focus-shadow: 0 0 0 2px $base-focus-ring-color;
   --pa-command-palette-item-hover-bg: #{$light-elevated};
   --pa-command-palette-item-active-bg: rgba(242, 151, 24, 0.15);
   --pa-command-palette-highlight-bg: rgba(242, 151, 24, 0.2);
+  // Match text vanished on the orange tint (1.42:1); primary text contrasts.
+  --pa-command-palette-highlight-text: var(--pc-text-color-1);
 
   // Alerts - light mode
   @include output-pc-alert-variables-light;

@@ -427,6 +427,8 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   --pa-command-palette-item-hover-bg: #{$nato-dark-surface};
   --pa-command-palette-item-active-bg: rgba(17, 138, 203, 0.22);
   --pa-command-palette-highlight-bg: rgba(17, 138, 203, 0.32);
+  // Match text vanished on the azure tint (1.81:1); primary text contrasts.
+  --pa-command-palette-highlight-text: var(--pc-text-color-1);
 
   // Alert colors
   @include output-pc-alert-variables-dark;

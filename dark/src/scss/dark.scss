@@ -314,6 +314,9 @@ $checkbox-focus-shadow: 0 0 0 2px $base-focus-ring-color;
   --pc-sidebar-submenu-bg: #{$light-surface};
   --pc-sidebar-submenu-hover-bg: rgba(77, 171, 247, 0.1);
   --pc-sidebar-submenu-active-bg: #{rgba($dark-accent, 0.2)};
+  // Active submenu text defaulted light and vanished on the pale blue tint in
+  // light mode (1.28:1). Track the primary text colour, which contrasts.
+  --pc-sidebar-submenu-active-text: var(--pc-text-color-1);
 
   // Footer - dark footer in light mode too
   --pc-footer-bg: #{$dark-bg-header};
@@ -363,6 +366,8 @@ $checkbox-focus-shadow: 0 0 0 2px $base-focus-ring-color;
   --pa-command-palette-item-hover-bg: #{$light-surface};
   --pa-command-palette-item-active-bg: rgba(77, 171, 247, 0.15);
   --pa-command-palette-highlight-bg: rgba(77, 171, 247, 0.2);
+  // Match text vanished on the blue tint in light mode (1.81:1); primary text contrasts.
+  --pa-command-palette-highlight-text: var(--pc-text-color-1);
 
   // Alert colors - derived from semantic colors
   @include output-pc-alert-variables-light;

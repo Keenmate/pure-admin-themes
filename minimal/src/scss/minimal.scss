@@ -276,6 +276,9 @@ $modal-content-bg: $minimal-white;
   --pc-sidebar-submenu-bg: #{$dark-bg};
   --pc-sidebar-submenu-hover-bg: rgba(255, 255, 255, 0.08);
   --pc-sidebar-submenu-active-bg: #{$dark-surface};
+  // Active submenu text defaulted to a muted grey that vanished on the raised
+  // surface (1.07:1). Track the primary text colour, which contrasts with it.
+  --pc-sidebar-submenu-active-text: var(--pc-text-color-1);
 
   // Footer - dark grayscale
   --pc-footer-bg: #{$dark-card};
@@ -326,6 +329,8 @@ $modal-content-bg: $minimal-white;
   --pa-command-palette-item-hover-bg: #{$dark-surface};
   --pa-command-palette-item-active-bg: rgba(255, 255, 255, 0.1);
   --pa-command-palette-highlight-bg: rgba(255, 255, 255, 0.15);
+  // Match text vanished on the light tint (1.20:1); primary text contrasts.
+  --pa-command-palette-highlight-text: var(--pc-text-color-1);
 
   // Alert colors - derived from semantic colors
   @include output-pc-alert-variables-dark;

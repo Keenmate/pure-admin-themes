@@ -331,6 +331,12 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   @include output-pc-component-variables;
   @include output-pc-alert-variables-light;
 
+  // Navbar stays dark ink (#{$sentinel-gray-900}) even in light mode, so its
+  // text must be light — the default resolves dark and was invisible (1.19:1).
+  --pc-navbar-text: #{$sentinel-gray-100};
+  --pc-navbar-text-secondary: #{$sentinel-gray-300};
+  --pc-navbar-profile-name-color: #{$sentinel-gray-50};
+
   // Input group - light gray background for light mode
   --pa-input-group-prepend-bg: #{$sentinel-gray-100};
   --pa-input-group-prepend-text: #{$sentinel-gray-700};
@@ -435,6 +441,8 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   --pa-command-palette-item-hover-bg: #{$sentinel-dark-surface};
   --pa-command-palette-item-active-bg: rgba(224, 65, 79, 0.22);
   --pa-command-palette-highlight-bg: rgba(224, 65, 79, 0.32);
+  // Match text vanished on the crimson tint (1.34:1); primary text contrasts.
+  --pa-command-palette-highlight-text: var(--pc-text-color-1);
 
   // Alert colors
   @include output-pc-alert-variables-dark;
