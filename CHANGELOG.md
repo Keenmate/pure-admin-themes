@@ -4,6 +4,15 @@ All notable changes to the Pure Admin Themes collection are documented in this f
 
 ## [2.9.0-rc13] - 2026-09-11
 
+### Added
+
+- **dracula:** Accent-tinted native date/time picker indicators. The
+  `::-webkit-calendar-picker-indicator` glyph can't take a `color`, so the
+  calendar/clock icon is now painted with `--pc-accent` (Dracula purple) via the
+  mask trick — accent as background, an inline SVG glyph as the mask. Date /
+  month / week / datetime-local use a calendar glyph; time uses a clock. Painting
+  the glyph ourselves makes it independent of `color-scheme`.
+
 ### Fixed
 
 - **minimal (dark mode):** Web-component controls that paint a glyph/label ON the accent were invisible. Dark mode flips the accent to a near-white gray (`#e8e8e8`), but `--base-text-color-on-accent` was left at the light-mode default (`#ffffff`) — so the multiselect's badge-remove ✕, and its count-clear / popover-close hover fills, rendered white-on-near-white. Added `--base-text-color-on-accent: #1a1a1a` to the dark block (the core `--pa-btn-primary-text` already flipped to dark here; this restores the same treatment on the generic `--base-*` bridge the web components read).
