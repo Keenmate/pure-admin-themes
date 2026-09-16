@@ -323,6 +323,24 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   @include output-pc-component-variables;
   @include output-pc-alert-variables-light;
 
+  // Chevron glyph — Lucide "Square Chevron Down" (outline). The framework
+  // consumes --base-icon-chevron as a RIGHT-pointing base and rotates it into
+  // place (split-button toggle +90° → down, tabs → left/right, sidebar → down),
+  // so we store the RIGHT-pointing square-chevron here; it renders as a downward
+  // square chevron in the dropdown affordances. Applies to both modes (icons
+  // aren't mode-dependent) and, via the var() fallback chain, re-skins every
+  // pa-icon chevron plus the web components at once.
+  //
+  // NOTE the tightened viewBox "2 2 20 20": Lucide's boxed glyphs draw the
+  // frame in the middle 18×18 of a 24×24 canvas (~12% dead margin all round).
+  // Since the mask fits the whole canvas via `center / contain`, the default
+  // viewBox would render the square at ~75% of the icon box (visibly small vs
+  // the bare stroked chevron). Cropping to the frame's stroke bounds
+  // (rect x3..21 + 1px stroke → 2..22) makes the square fill its box like an
+  // un-boxed glyph — the size correction lives entirely in the artwork, so it
+  // applies to every chevron surface at once with no per-component size knobs.
+  --base-icon-chevron: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%222 2 20 20%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect width=%2218%22 height=%2218%22 x=%223%22 y=%223%22 rx=%222%22/%3E%3Cpath d=%22m10 8 4 4-4 4%22/%3E%3C/svg%3E");
+
   // Input group - light gray background for light mode
   --pa-input-group-prepend-bg: #{$nato-gray-100};
   --pa-input-group-prepend-text: #{$nato-gray-700};
@@ -332,6 +350,18 @@ $checkbox-focus-shadow: 0 0 0 2px rgba($base-accent-color, 0.25);
   // Outline-secondary button: default resolves to white (secondary text),
   // which is invisible on our light card backgrounds. Use navy.
   --pa-btn-secondary-outline-color: #{$nato-navy};
+}
+
+// web-multiselect toggle chevron size — match pure-admin's split-button /
+// range-group chevron (--pa-icon-size: 1.2rem = 12px). The component pins
+// --ms-toggle-icon-size on :host (default 1.6 × --ms-rem = 16px) with no
+// --base-* hook, so a :root override would be shadowed by the host's own
+// value; we must target the host element itself with > (0,1,0) specificity.
+// Nato-only: brings the boxed square chevron to one consistent size across
+// native pure-admin dropdowns and the web component.
+:root web-multiselect,
+.pc-mode-dark web-multiselect {
+  --ms-toggle-icon-size: 1.2rem;
 }
 
 // =============================================================================

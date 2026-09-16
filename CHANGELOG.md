@@ -2,6 +2,38 @@
 
 All notable changes to the Pure Admin Themes collection are documented in this file.
 
+## [3.1.0] - 2026-09-16 [PUBLISHED]
+
+Republished in lockstep with `@keenmate/pure-admin-core` `3.1.0` (structural
+affordance icons unified on the masked `--pa-icon` system). Rebuilt all 16 themes
+against core 3.1.0.
+
+### Changed
+
+- **All 16 themes:** `dependencies.core` bumped `^3.0.0` → `^3.1.0` and theme
+  `version` → `3.1.0`, matching the core minor. Root `@keenmate/pure-css`
+  dependency bumped `^1.0.0` → `^1.0.3` (stable base-token line).
+
+### Added
+
+- **nato:** Square-chevron glyph. Overrides `--base-icon-chevron` with Lucide
+  "Square Chevron Down" (outline), so every chevron in the theme — split-button
+  toggles, range-group caret, tab arrows, sidebar submenus, and the web
+  components — renders as a boxed square chevron in one override. Stored as the
+  RIGHT-pointing variant (the framework rotates the base glyph into place) with a
+  tightened `viewBox` (`2 2 20 20`) so the boxed glyph fills its icon box instead
+  of rendering at ~75% inside Lucide's built-in 24×24 margin.
+
+### Fixed
+
+- **nato:** Multiselect toggle chevron size mismatch. `@keenmate/web-multiselect`
+  sizes its toggle at `1.6 × --base-rem` (16px) while pure-admin's split-button /
+  range-group chevron is 12px, so the boxed square chevron rendered at two sizes
+  side by side. Pinned `--ms-toggle-icon-size: 1.2rem` on the `web-multiselect`
+  host to match (the component declares it on `:host`, so the override targets the
+  host element with `> (0,1,0)` specificity rather than `:root`, which would be
+  shadowed).
+
 ## [3.0.0] - 2026-09-13 [PUBLISHED]
 
 Republished in lockstep with `@keenmate/pure-admin-core` `3.0.0` — the stable cut
