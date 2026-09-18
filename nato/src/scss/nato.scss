@@ -136,6 +136,9 @@ $base-text-on-info: #ffffff;
 // Elevated surface (card/table headers, striped rows) — header tint, distinct from the white card
 $base-elevated-bg: $nato-gray-100;
 
+// Square list markers — fits NATO's stark, utilitarian visual identity.
+$base-list-bullet-type: square;
+
 @import '@keenmate/pure-admin-core/src/scss/variables/index';
 
 // =============================================================================

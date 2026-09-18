@@ -1,6 +1,6 @@
 {
   "name": "pure-admin-themes",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "private": true,
   "description": "Theme collection for Pure Admin framework",
   "author": "KeenMate",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@keenmate/pure-admin-core": "file:../pure-admin/packages/core",
-    "@keenmate/pure-css": "^1.0.3"
+    "@keenmate/pure-css": "^1.0.5"
   },
   "devDependencies": {
     "@keenmate/pureadmin": "file:../pure-admin-cli",

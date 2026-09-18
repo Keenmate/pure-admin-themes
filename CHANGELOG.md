@@ -2,7 +2,26 @@
 
 All notable changes to the Pure Admin Themes collection are documented in this file.
 
-## [3.1.0] - 2026-09-16 [PUBLISHED]
+## [3.2.0] - 2026-09-18 [PUBLISHED]
+
+Republished in lockstep with `@keenmate/pure-admin-core` `3.2.0` (command-palette
+modal entrance, new download/link/external-link action icons, and the runtime
+list-marker knob). Rebuilt all 16 themes against core 3.2.0.
+
+### Changed
+
+- **All 16 themes:** `dependencies.core` bumped `^3.1.0` → `^3.2.0` and theme
+  `version` → `3.2.0`, matching the core minor. (Root `@keenmate/pure-css`
+  dependency already at `^1.0.5`, which carries the `ul, ol` list-marker knob.)
+
+### Added
+
+- **nato & audi:** Square list bullets. Both set `$base-list-bullet-type: square`
+  before importing `variables/index`, so the themeable `--base-list-bullet-type`
+  default emits `square` at `:root` — every content list (`.pa-list-basic`,
+  `.pa-alert__list`, bare `<ul>`) renders square markers, matching each theme's
+  boxed visual language. Per-instance `--pc-list-bullet-type` still overrides, and
+  lists that reset the marker (`--unstyled`, nav/sidebar menus) are unaffected.
 
 Republished in lockstep with `@keenmate/pure-admin-core` `3.1.0` (structural
 affordance icons unified on the masked `--pa-icon` system). Rebuilt all 16 themes
